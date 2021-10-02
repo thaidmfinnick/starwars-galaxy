@@ -7,6 +7,7 @@ import Header from './components/Header/index';
 import People from './components/Content/People';
 import Planets from './components/Content/Planets';
 import Ships from './components/Content/Ships';
+import DetailPeople from './components/Content/DetailPeople';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path='/people' component={People} />
+          <Route path='/people' exact component={People} />
+          <Route path='/people/:id' component={DetailPeople} />
           <Route path='/ships' component={Ships} />
           <Route path='/planets' component={Planets} />
         </Switch>

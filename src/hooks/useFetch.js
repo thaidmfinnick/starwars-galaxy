@@ -1,23 +1,35 @@
 import { useState, useEffect } from 'react';
 import API from '../API';
 
-export const useFetch = () => {
+// Fetch du lieu theo id va kieu du lieu (people, planets, ships)
+
+export const useFetch = (id, type) => {
     const [state, setState] = useState([]);
     const fetchData = async() => {
         try {
-            const people = await API.fetchPeople();
-            const item = people.results[1];
-            setState(item);
+            if (type === 'people')
+            {
+                const people = await API.fetchPeople();
+                setState(people.results[id]);
+            }
+            else if (type === 'ships')
+            {
+                const ships = await API.fetchShips();
+                setState(ships.results[id]);
+            }
+            else if (type === 'planets')
+            {
+                const planets = await API.fetchPlanets();
+                setState(planets.results[id]);
+            }
         } catch(error) {
             console.log('error');
         }
     }
     useEffect(() => {
-        setState([]);
+        // setState([]);
         fetchData();
     }, [])
-
-
     return {state};
 }
 
