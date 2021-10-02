@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import API from '../API';
 
 // Fetch du lieu cho trang tiep theo (people, planets, ships)
+// Chua biet cach lam the nao nen chua dung
 
 export const useFetchForNextPage = (next, type) => {
     const [state, setState] = useState([]);

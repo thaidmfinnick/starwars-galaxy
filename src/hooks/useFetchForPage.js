@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import API from '../API';
 
-// Fetch du lieu theo kieu du lieu cho Trang(people, planets, ships)
+// Fetch du lieu theo kieu du lieu cho Trang (people, planets, ships)
 
 export const useFetchForPage = (type) => {
     const [state, setState] = useState([]);

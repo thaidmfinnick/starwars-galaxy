@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-
 // Components
 import Header from './components/Header/index';
 import People from './components/Content/People';
