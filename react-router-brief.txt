@@ -1,0 +1,18 @@
+Project Brief
+
+Miêu tả project: Sử dụng swapi api để hiển thị thông tin về ship, planets, people trong phim Starwars
+
+Cấu trúc project:
+	 - HomePage: 1 dashboard hiển thị 3 thẻ SHIP, PLANETS, PEOPLE
+	 - ShipPage: 
+		+ Click vào thẻ SHIP ở trang HomePage, chuyển tới url localhost:.../ships/
+		+ Tại đây hiển thị danh sách ship
+		+ Có button back để trở lại trang trước
+	 - ShipDetailPage:
+		+ Click vào một ship trong ShipPage, chuyển tới url localhost:.../ships/:shipId
+		+ Tại đây hiển thị thông tin của ship có id đã được chỉ định
+		+ Có button back để trở lại trang trước
+
+	 - Tương tự với các trang PLANETS, PEOPLE
+	
+Yêu cầu: có sử dụng Route, Switch, useHistory, useParams
