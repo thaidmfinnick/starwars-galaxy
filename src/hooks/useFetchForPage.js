@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 import API from '../API';
 
-// Fetch du lieu theo id va kieu du lieu (people, planets, ships)
+// Fetch du lieu theo kieu du lieu cho Trang(people, planets, ships)
 
-export const useFetch = (id, type) => {
+export const useFetchForPage = (type) => {
     const [state, setState] = useState([]);
     const fetchData = async() => {
         try {
             if (type === 'people')
             {
                 const people = await API.fetchPeople();
-                setState(people.results[id]);
+                setState(people.results);
             }
             else if (type === 'ships')
             {
                 const ships = await API.fetchShips();
-                setState(ships.results[id]);
+                setState(ships.results);
             }
             else if (type === 'planets')
             {
                 const planets = await API.fetchPlanets();
-                setState(planets.results[id]);
+                setState(planets.results);
             }
         } catch(error) {
             console.log('error');
@@ -32,4 +32,3 @@ export const useFetch = (id, type) => {
     }, [])
     return {state};
 }
-

@@ -1,12 +1,12 @@
 import { useParams } from "react-router"
-import { useFetch } from "../../hooks/useFetch";
+import { useFetchForDetail } from "../../hooks/useFetchForDetail";
 
 // Hook
 import BackButton from "../BackButton/ButtonBack";
 const DetailPeople = () => {
     const { id } = useParams();
-    const {state} = useFetch(id-1, 'people');
-    console.log(state);
+    const {state} = useFetchForDetail(id-1, 'people');
+    // console.log(state);
     return (
         <div>
             <BackButton type='people'/>

@@ -1,27 +1,13 @@
-// import { StaticRouter } from 'react-router';
-// import { useFetch } from '../../hooks/useFetch';
-import API from '../../API';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useRouteMatch, Switch, Route } from 'react-router-dom';
-import BackButton from '../BackButton/ButtonBack';
+import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
+// Component
 import DetailPeople from './DetailPeople';
+// Hook
+import { useFetchForPage } from '../../hooks/useFetchForPage';
 const People = () => {
     var id = 1;
-    const [state, setState] = useState([]);
     const { path, url } = useRouteMatch();
-    const fetchData = async() => {
-        try {
-            const people = await API.fetchPeople();
-            setState(people.results);
-            console.log(people.results);
-        } catch(error) {
-            console.log('error');
-        }
-    }
-    useEffect(() => {
-        // setState([]);
-        fetchData();
-    }, [])
+    const { state } = useFetchForPage('people');
+    console.log(state);
     return (
         <div>
             <h1>We are people</h1>
