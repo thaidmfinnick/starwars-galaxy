@@ -16,8 +16,11 @@ export const useFetchForDetail = (id, type) => {
             }
             else if (type === 'ships')
             {
-                const ships = await API.fetchNextShips(id);
-                // if (API.fetchNextShips(id) == )
+                var ships = await API.fetchNextShips(id);
+                while (ships.detail === 'Not found') {
+                    id = parseInt(id) + 1;
+                    ships = await API.fetchNextShips(id);
+                }
                 setState(ships);
             }
             else if (type === 'planets')

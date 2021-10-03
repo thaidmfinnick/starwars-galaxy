@@ -5,14 +5,13 @@ import { useFetchForDetail } from "../../hooks/useFetchForDetail";
 import BackButton from "../BackButton/ButtonBack";
 const DetailShips = () => {
     var { id } = useParams();
-    id = parseInt(id) + 1;
     const {state} = useFetchForDetail(id, 'ships');
     // console.log(id);
     // console.log(state);
     return (
         <div>
             <BackButton type='ships'/>
-            <h1>{id-1}</h1>
+            <h1>{id}</h1>
             <p>Name: {state.name}</p>
             <p>Model: {state.model}</p>
             <p>Manufacturer: {state.manufacturer}</p>
