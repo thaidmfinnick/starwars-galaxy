@@ -1,11 +1,11 @@
-import { Link, useRouteMatch, Switch, Route } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 // Component
-import DetailPlanets from './DetailPlanets';
+
 // Hook
 import { useFetchForPage } from '../../hooks/useFetchForPage';
 const Planets = () => {
     var id = 1;
-    const { path, url } = useRouteMatch();
+    const { url } = useRouteMatch();
     const { state } = useFetchForPage('planets');
     console.log(state);
     return (
@@ -16,12 +16,6 @@ const Planets = () => {
                     <li><Link key={id} to={`${url}/${id++}`}>{result.name}</Link></li>
                 ))}
             </ul>
-
-            <Switch>
-                {state.map(() =>(
-                   <Route path={`${path}/${id}`} component={DetailPlanets} /> 
-                ))}
-            </Switch>
         </div>
     )
 }

@@ -5,8 +5,8 @@ import { useFetchForDetail } from "../../hooks/useFetchForDetail";
 import BackButton from "../BackButton/ButtonBack";
 const DetailPlanets = () => {
     const { id } = useParams();
-    const {state} = useFetchForDetail(id-1, 'planets');
-    console.log(state);
+    const {state} = useFetchForDetail(id, 'planets');
+    // console.log(state);
     return (
         <div>
             <BackButton type='planets'/>
