@@ -1,23 +1,31 @@
 import { useParams } from "react-router"
-import { useFetchForDetail } from "../../hooks/useFetchForDetail";
-
+import { useSelector, useDispatch } from 'react-redux';
+// Action
+import {renderDetailPeople} from '../../actions/Detail';
 // Hook
 import BackButton from "../BackButton/ButtonBack";
+import { useFetchForDetail } from "../../hooks/useFetchForDetail";
+
 const DetailPeople = () => {
+    const listDetailPeople = useSelector(state => state.people.detail);
+    const dispatch = useDispatch();
     const { id } = useParams();
-    const {state} = useFetchForDetail(id, 'people');
-    // console.log(state);
+    const { state } = useFetchForDetail(id, 'people');
+
+    const action = renderDetailPeople(state);
+    dispatch(action);
+
     return (
         <div>
             <BackButton type='people'/>
             <h1>{id}</h1>
-            <p>Name: {state.name}</p>
-            <p>Height: {state.height}</p>
-            <p>Mass: {state.mass}</p>
-            <p>Hair Color: {state.hair_color}</p>
-            <p>Skin Color: {state.skin_color}</p>
-            <p>Eye Color: {state.eye_color}</p>
-            <p>Birth Year: {state.birth_year}</p>
+            <p>Name: {listDetailPeople.name}</p>
+            <p>Height: {listDetailPeople.height}</p>
+            <p>Mass: {listDetailPeople.mass}</p>
+            <p>Hair Color: {listDetailPeople.hair_color}</p>
+            <p>Skin Color: {listDetailPeople.skin_color}</p>
+            <p>Eye Color: {listDetailPeople.eye_color}</p>
+            <p>Birth Year: {listDetailPeople.birth_year}</p>
 
         </div>
     )
