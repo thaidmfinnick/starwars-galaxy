@@ -1,19 +1,18 @@
 
 const initialState = {
-    list: [],
-    detail: []
+    list: []
 }
 
 const peopleReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'PEOPLE' : {
             // var newList = [...state.list];
-            state.list = action.payload;
-            return {...state};
-        }
-        case 'DETAIL_PEOPLE' : {
-            state.detail = action.payload;
-            return {...state};
+            if(state.list.length > 0) {return {...state}}
+            else {
+                state.list = action.payload;
+                // state.detail = action.payload;
+                return {...state};
+            }
         }
         default: {
             return state;

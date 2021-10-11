@@ -1,32 +1,31 @@
 import { useParams } from "react-router"
 import { useSelector, useDispatch } from 'react-redux';
 // Action
-import {renderDetailPlanets} from '../../actions/Detail';
+import {renderPlanets} from '../../actions/Page';
 
 // Hook
 import BackButton from "../BackButton/ButtonBack";
-import { useFetchForDetail } from "../../hooks/useFetchForDetail";
 
 const DetailPlanets = () => {
-    const listDetailPlanets = useSelector(state => state.planets.detail);
+    const listDetailPlanets = useSelector(state => state.planets.list);
     const dispatch = useDispatch();
     const { id } = useParams();
-    const {state} = useFetchForDetail(id, 'planets');
+
     // console.log(state);
 
-    const action = renderDetailPlanets(state);
+    const action = renderPlanets();
     dispatch(action);
     return (
         <div>
             <BackButton type='planets'/>
             <h1>{id}</h1>
-            <p>Name: {listDetailPlanets.name}</p>
-            <p>Climate: {listDetailPlanets.climate}</p>
-            <p>Rotation Period: {listDetailPlanets.rotation_period}</p>
-            <p>Orbital Period: {listDetailPlanets.orbital_period}</p>
-            <p>Gravity: {listDetailPlanets.gravity}</p>
-            <p>Population: {listDetailPlanets.population}</p>
-            <p>Diameter: {listDetailPlanets.diameter}</p>
+            <p>Name: {listDetailPlanets[id-1].name}</p>
+            <p>Climate: {listDetailPlanets[id-1].climate}</p>
+            <p>Rotation Period: {listDetailPlanets[id-1].rotation_period}</p>
+            <p>Orbital Period: {listDetailPlanets[id-1].orbital_period}</p>
+            <p>Gravity: {listDetailPlanets[id-1].gravity}</p>
+            <p>Population: {listDetailPlanets[id-1].population}</p>
+            <p>Diameter: {listDetailPlanets[id-1].diameter}</p>
 
         </div>
     )

@@ -1,17 +1,17 @@
 const initialState = {
-    list: [],
-    detail: []
+    list: []
+
 }
 
 const shipsReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'SHIPS' : {
-            state.list = action.payload;
-            return {...state};
-        }
-        case 'DETAIL_SHIPS' : {
-            state.detail = action.payload;
-            return {...state};
+            if(state.list.length > 0) {return {...state}}
+            else {
+                state.list = action.payload;
+                // state.detail = action.payload;
+                return {...state};
+            }
         }
         default: {
             return state;
